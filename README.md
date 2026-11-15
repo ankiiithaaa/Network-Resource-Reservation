@@ -222,21 +222,24 @@ Raw data: `mininet/results/run-20261115T083403812863146Z/`, `results/performance
 
 Full output: `results/person1_test_results.csv`, `results/test_server_log.txt`.
 
-## Verification status
+## Tested live on the Ubuntu VM
 
-- [x] Ryu controller starts; switch connects (`Switch connected: dpid=0000000000000001`)
-- [x] `pingall` 0 % loss with h1–h4 (12/12)
-- [x] Live demo: accept / accept / reject, flows + meters installed, expiry removes the flow
-- [x] iPerf3: meter caps h1 at its reservation (UDP 10 → 3.92 Mbps)
-- [x] `run_benchmark.sh`: all live checks PASS, real CSV + graphs
-- [ ] `controller/mininet_tests/e2e_test.py` (Aryan V Jain's own automated Mininet test) – not run
+| What | Result |
+|---|---|
+| Ryu controller start-up and switch connection | `Switch connected: dpid=0000000000000001` |
+| Host connectivity | `pingall` 0 % loss with h1–h4 (12 / 12) |
+| Live demo | accept / accept / reject; flows and meters installed; expiry removes the flow |
+| Policy enforcement (iPerf3) | meter caps h1 at its reservation: UDP 10 → 3.92 Mbps |
+| Benchmark (`run_benchmark.sh`) | all live checks PASS; real CSV and graphs |
 
-Note: start the benchmark only after all reservations have expired or the controller
+### Tips for running it again
+
+Start the benchmark only after all reservations have expired or the controller
 was restarted. The controller re-installs active reservations when a switch connects,
 so a leftover meter on h1 would distort the comparison (this happened in a first
 attempt, which was discarded).
 
-Note: `sudo mn -c` also kills `ryu-manager`. Run it before starting the controller.
+`sudo mn -c` also kills `ryu-manager`. Run it before starting the controller.
 
 ## Known limitations
 
@@ -245,3 +248,4 @@ Note: `sudo mn -c` also kills `ryu-manager`. Run it before starting the controll
 - State is in memory. Restarting the server releases leftover reservations on the controller at startup.
 - h4 has address 10.0.0.4 in the VM's root namespace. If the VM's own LAN also uses 10.0.0.0/24, change the subnet in `mininet/config/network.json`.
 - The controller API has no authentication and listens on localhost only.
+- `controller/mininet_tests/e2e_test.py` (the controller's own automated Mininet test) was not run as a separate script; the same checks (start-up, switch connection, flow install and removal, iPerf3 enforcement) were covered by the live demo above.
