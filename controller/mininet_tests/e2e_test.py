@@ -71,7 +71,14 @@ def iperf(net, client, server, secs=5):
     time.sleep(1)
     out = client.cmd("iperf -c %s -t %d -f m" % (server.IP(), secs))
     server.cmd("pkill iperf")
-    return mbps(out.strip().splitlines()[-1]) if out.strip() else None
+    # Use the last line that carries a rate: newer iperf versions can print
+    # further lines after the summary, so the very last line is not reliable.
+    rates = [r for r in (mbps(line) for line in out.splitlines()) if r is not None]
+    if not rates:
+        say("iperf output (no rate found):")
+        say(out.strip() or "(empty)")
+        return None
+    return rates[-1]
 
 
 def main():
