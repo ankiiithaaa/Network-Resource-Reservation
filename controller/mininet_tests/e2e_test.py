@@ -8,7 +8,7 @@ Then run (needs root for Mininet):
 
 It builds h1,h2,h3 (clients) + h4 (server) behind switch s1, drives the HTTP API
 and checks with ovs-ofctl that flows/meters appear and disappear, and (with
-iperf) that the reserved rate is actually enforced. Output is also written to
+iperf3, 10 Mbps of UDP) that the reserved rate is actually enforced. Output is also written to
 test_results/e2e_results.txt.
 """
 import json
@@ -67,21 +67,23 @@ def mbps(text):
 
 
 def iperf(net, client, server, secs=5):
-    # Stop any old iperf server and give it time to free port 5001; starting a
-    # new server straight after a kill can fail to bind ("Connection refused").
-    server.cmd("pkill -9 -x iperf; sleep 0.5")
-    server.cmd("iperf -s -f m > /dev/null 2>&1 &")
+    """Receiver goodput (Mbps) of 10 Mbps of UDP from client to server.
+
+    Uses an iperf3 one-off server (-1), so no server has to be killed and
+    restarted between measurements. UDP is used because a meter polices:
+    TCP backs off at every drop and never shows the cap, UDP does.
+    """
+    server.cmd("pkill -9 -x iperf3; sleep 0.5")
+    server.cmd("iperf3 -s -1 -D")
     for _ in range(20):  # wait up to 5 s until the server is listening
-        if ":5001" in server.cmd("ss -ltn"):
+        if ":5201" in server.cmd("ss -ltn"):
             break
         time.sleep(0.25)
-    out = client.cmd("iperf -c %s -t %d -f m" % (server.IP(), secs))
-    server.cmd("pkill -9 -x iperf; sleep 0.5")
-    # Use the last line that carries a rate: newer iperf versions can print
-    # further lines after the summary, so the very last line is not reliable.
-    rates = [r for r in (mbps(line) for line in out.splitlines()) if r is not None]
+    out = client.cmd("iperf3 -c %s -u -b 10M -t %d -f m" % (server.IP(), secs))
+    rates = [r for r in (mbps(line) for line in out.splitlines()
+                         if "receiver" in line) if r is not None]
     if not rates:
-        say("iperf output (no rate found):")
+        say("iperf3 output (no receiver rate found):")
         say(out.strip() or "(empty)")
         return None
     return rates[-1]
@@ -108,7 +110,7 @@ def main():
 
         say("\n=== 2. Reserve 4 Mbps for C1 (h1) ===")
         base = iperf(net, h1, h4)
-        say("baseline h1->h4 throughput without reservation: %s Mbps" % base)
+        say("baseline h1->h4, 10 Mbps UDP offered, no reservation: %s Mbps received" % base)
         code, body = api("POST", "/api/reservation", {
             "action": "reserve", "client_id": "C1",
             "reservation_id": "R001", "bandwidth": 4})
@@ -119,7 +121,7 @@ def main():
               "nw_src=10.0.0.1" in flows and "meter:" in flows)
         check("meter present at 4000 kbps", "rate=4000" in meters)
         rate = iperf(net, h1, h4)
-        say("measured h1->h4 with reservation: %s Mbps" % rate)
+        say("h1->h4, 10 Mbps UDP offered, 4 Mbps reservation: %s Mbps received" % rate)
         check("traffic limited to ~4 Mbps", rate is not None and 2.5 <= rate <= 5.5,
               "(%s Mbps)" % rate)
 
