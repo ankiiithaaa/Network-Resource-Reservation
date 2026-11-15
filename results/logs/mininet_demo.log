@@ -1,0 +1,52 @@
+Script started on 2026-11-15 14:56:25+05:30 [COMMAND="sudo python3 topology.py" TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="107" LINES="41"]
+*** Configuring hosts
+h1 h2 h3 h4 
+*** Starting controller
+c0 
+*** Starting 1 switches
+s1 ...
+s1 is_connected=true to tcp:127.0.0.1:6653
+Reservation server host h4 = 10.0.0.4 (root namespace, s1 port 4). Start the server in another VM terminal:  python3 server/server.py --host 10.0.0.4
+*** Starting CLI:
+mininet> h1 python3 ../client/client.py --server 10.0.0.4 reserve C1 4 300
+Reservation ID: R001
+Status: ACCEPTED
+Allocated bandwidth: 4 Mbps
+Duration: 300 seconds (expires at 15:03:02)
+Remaining bandwidth: 6 Mbps
+mininet> h2 python3 ../client/client.py --server 10.0.0.4 reserve C2 3 120
+Reservation ID: R002
+Status: ACCEPTED
+Allocated bandwidth: 3 Mbps
+Duration: 120 seconds (expires at 15:00:14)
+Remaining bandwidth: 3 Mbps
+mininet> h3 python3 ../client/client.py --server 10.0.0.4 reserve C3 5 300
+Status: REJECTED
+Reason: Insufficient bandwidth: requested 5 Mbps, only 3 Mbps available
+Remaining bandwidth: 3 Mbps
+mininet> sh ovs-ofctl -O OpenFlow13 dump-flows s1
+ cookie=0x1, duration=37.641s, table=0, n_packets=5, n_bytes=419, priority=101,ip,nw_src=10.0.0.1 actions=meter:1,NORMAL
+ cookie=0x2, duration=24.965s, table=0, n_packets=5, n_bytes=419, priority=101,ip,nw_src=10.0.0.2 actions=meter:2,NORMAL
+ cookie=0x0, duration=126.610s, table=0, n_packets=107, n_bytes=10926, priority=0 actions=NORMAL
+mininet> sh ovs-ofctl -O OpenFlow13 dump-meters s1
+OFPST_METER_CONFIG reply (OF1.3) (xid=0x2):
+meter=1 kbps burst bands=
+type=drop rate=4000 burst_size=400
+
+meter=2 kbps burst bands=
+type=drop rate=3000 burst_size=300
+mininet> sh ovs-ofctl -O OpenFlow13 dump-flows s1
+ cookie=0x1, duration=176.665s, table=0, n_packets=5, n_bytes=419, priority=101,ip,nw_src=10.0.0.1 actions=meter:1,NORMAL
+ cookie=0x0, duration=265.634s, table=0, n_packets=115, n_bytes=11594, priority=0 actions=NORMAL
+mininet> exit
+*** Stopping 1 controllers
+c0 
+*** Stopping 4 links
+....
+*** Stopping 1 switches
+s1 
+*** Stopping 4 hosts
+h1 h2 h3 h4 
+*** Done
+
+Script done on 2026-11-15 15:01:17+05:30 [COMMAND_EXIT_CODE="0"]

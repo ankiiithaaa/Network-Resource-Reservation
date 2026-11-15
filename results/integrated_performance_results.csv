@@ -1,0 +1,4 @@
+﻿date,scenario,source,destination,protocol,reservation_mbps,offered_mbps,sender_mbps,receiver_mbps,loss_pct,tcp_retransmits,evidence
+2026-11-15,TCP with 4 Mbps reservation (OpenFlow meter),h1 10.0.0.1,h3 10.0.0.3,TCP,4,,1.99,1.78,,431,screenshots/07_iperf_reserved_vs_unreserved.png
+2026-11-15,TCP without reservation (baseline),h2 10.0.0.2,h3 10.0.0.3,TCP,0,,32900,32900,,5,screenshots/07_iperf_reserved_vs_unreserved.png
+2026-11-15,UDP 10 Mbps offered with 4 Mbps reservation,h1 10.0.0.1,h3 10.0.0.3,UDP,4,10,10.0,3.92,61,,screenshots/09_iperf_udp_meter_cap_4mbps.png

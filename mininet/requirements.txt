@@ -1,0 +1,4 @@
+# Core scripts use stdlib plus the distro's Mininet Python API.
+# Ubuntu apt dependencies are listed in README.md. Ryu runs separately.
+# Optional graph generator (or use Ubuntu's python3-matplotlib package).
+matplotlib>=3.5,<4

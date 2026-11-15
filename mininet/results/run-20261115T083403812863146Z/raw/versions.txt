@@ -1,0 +1,14 @@
+mn --version
+
+
+ovs-vsctl --version
+ovs-vsctl (Open vSwitch) 3.7.1
+DB Schema 8.8.0
+
+iperf3 --version
+iperf 3.20 (cJSON 1.7.15)
+Linux pes1ug25am043-ankitha-p-VirtualBox 7.0.0-29-generic #29-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 17 20:52:35 UTC 2026 x86_64
+Optional features available: CPU affinity setting, IPv6 flow label, SCTP, TCP congestion algorithm setting, sendfile / zerocopy, socket pacing, authentication, bind to device, support IPv4 don't fragment, POSIX threads
+
+tc -V
+tc utility, iproute2-6.19.0, libbpf 1.6.3

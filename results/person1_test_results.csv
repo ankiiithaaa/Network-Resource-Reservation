@@ -1,0 +1,14 @@
+test,description,expected,actual,result
+TC01,Request 4 Mbps,"ACCEPTED, 6 left","ACCEPTED, 6.0 left",PASS
+TC02,Request another 3 Mbps,"ACCEPTED, 3 left","ACCEPTED, 3.0 left",PASS
+TC03,Request another 5 Mbps,REJECTED,"REJECTED (Insufficient bandwidth: requested 5 Mbps, only 3 Mbps available)",PASS
+TC04,Negative bandwidth,REJECTED,REJECTED (Invalid request: bandwidth must be greater than 0 Mbps),PASS
+TC04b,Malformed JSON request,ERROR,ERROR (Invalid request: malformed JSON (Expecting property name enclosed in double quotes)),PASS
+TC04c,Non-numeric bandwidth,REJECTED,REJECTED,PASS
+TC04d,Same client asks twice,REJECTED,REJECTED (Client C1 already holds reservation R001),PASS
+TC07,Accepted -> SDN policy installed,"controller has R001,R002","controller has R001,R002",PASS
+TC05,Reservation expiry (3 s),"R003 EXPIRED, 6 Mbps free","R003 EXPIRED, 6.0 Mbps free",PASS
+TC08,Expired/released -> SDN policy removed,controller has only R001,controller has R001,PASS
+TC09,Client disconnects,server continues running,"server alive=True, answered OK",PASS
+TC06,8 simultaneous 2 Mbps requests,"3 accepted, 10/10 Mbps, no over-allocation","3 accepted, 10.0/10.0 Mbps (controller 10.0)",PASS
+TC10,Controller down -> rollback,"REJECTED, capacity unchanged","REJECTED (SDN policy installation failed, reservation rolled back (controller unreachable at http://127.0.0.1:18081 ([WinError 10061] No connection could be made because the target machine actively refused it))); free 4.0 -> 4.0",PASS

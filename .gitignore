@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+venv/
+.venv*/
+mininet/results/run-*/
+!mininet/results/run-20261115T083403812863146Z/
+results/reservation_log.csv

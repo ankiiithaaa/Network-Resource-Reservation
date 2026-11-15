@@ -1,0 +1,43 @@
+test_bad_requests (test_api.ApiTests.test_bad_requests) ... ok
+test_health (test_api.ApiTests.test_health) ... ok
+test_reject_action_logs_without_allocating (test_api.ApiTests.test_reject_action_logs_without_allocating) ... ok
+test_rejected_over_capacity (test_api.ApiTests.test_rejected_over_capacity) ... ok
+test_release_message_from_brief (test_api.ApiTests.test_release_message_from_brief) ... ok
+test_reserve_message_from_brief (test_api.ApiTests.test_reserve_message_from_brief) ... ok
+test_update_and_delete_endpoints (test_api.ApiTests.test_update_and_delete_endpoints) ... ok
+test_accept_installs_policy (test_reservation_manager.ManagerTests.test_accept_installs_policy) ... ok
+test_dataplane_install_failure_rolls_back (test_reservation_manager.ManagerTests.test_dataplane_install_failure_rolls_back) ... install failed
+Traceback (most recent call last):
+  File "/home/claude/Person2_SDN_Controller/policy_store.py", line 262, in reserve
+    installed_on = self.dataplane.install(res)
+  File "/home/claude/Person2_SDN_Controller/tests/test_policy_store.py", line 27, in install
+    raise RuntimeError("switch unreachable")
+RuntimeError: switch unreachable
+ok
+test_dataplane_remove_failure_keeps_reservation (test_reservation_manager.ManagerTests.test_dataplane_remove_failure_keeps_reservation) ... remove failed
+Traceback (most recent call last):
+  File "/home/claude/Person2_SDN_Controller/policy_store.py", line 315, in release
+    self.dataplane.remove(res)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/claude/Person2_SDN_Controller/tests/test_policy_store.py", line 32, in remove
+    raise RuntimeError("switch unreachable")
+RuntimeError: switch unreachable
+ok
+test_duplicate_and_idempotent_reserve (test_reservation_manager.ManagerTests.test_duplicate_and_idempotent_reserve) ... ok
+test_exact_capacity_is_accepted (test_reservation_manager.ManagerTests.test_exact_capacity_is_accepted) ... ok
+test_expiry_removes_policy (test_reservation_manager.ManagerTests.test_expiry_removes_policy) ... ok
+test_explicit_client_ip (test_reservation_manager.ManagerTests.test_explicit_client_ip) ... ok
+test_meter_ids_are_reused (test_reservation_manager.ManagerTests.test_meter_ids_are_reused) ... ok
+test_no_duration_never_expires (test_reservation_manager.ManagerTests.test_no_duration_never_expires) ... ok
+test_note_rejected_allocates_nothing (test_reservation_manager.ManagerTests.test_note_rejected_allocates_nothing) ... ok
+test_one_reservation_per_client (test_reservation_manager.ManagerTests.test_one_reservation_per_client) ... ok
+test_reject_over_capacity_allocates_nothing (test_reservation_manager.ManagerTests.test_reject_over_capacity_allocates_nothing) ... ok
+test_release_removes_policy_and_frees_bandwidth (test_reservation_manager.ManagerTests.test_release_removes_policy_and_frees_bandwidth) ... ok
+test_release_unknown_is_404 (test_reservation_manager.ManagerTests.test_release_unknown_is_404) ... ok
+test_update_changes_rate_and_checks_capacity (test_reservation_manager.ManagerTests.test_update_changes_rate_and_checks_capacity) ... ok
+test_validation (test_reservation_manager.ManagerTests.test_validation) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.539s
+
+OK

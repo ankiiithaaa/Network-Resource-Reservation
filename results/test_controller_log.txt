@@ -1,0 +1,20 @@
+2026-11-14 21:04:56,994 INFO reservation: Loaded config from C:\Users\ANKITH~1\AppData\Local\Temp\tmpelqo7fwg\config.json
+2026-11-14 21:04:57,011 INFO root: MOCK controller API on http://127.0.0.1:18081 (no real switches)
+2026-11-14 21:04:58,123 INFO reservation: [dry-run] install R001 client=C1 ip=10.0.0.1 4.0 Mbps meter=1
+2026-11-14 21:04:58,124 INFO reservation: reserved {'reservation_id': 'R001', 'client_id': 'C1', 'bandwidth_mbps': 4.0, 'meter_id': 1, 'switches': ['dry-run-s1']}
+2026-11-14 21:04:58,132 INFO reservation: [dry-run] install R002 client=C2 ip=10.0.0.2 3.0 Mbps meter=2
+2026-11-14 21:04:58,132 INFO reservation: reserved {'reservation_id': 'R002', 'client_id': 'C2', 'bandwidth_mbps': 3.0, 'meter_id': 2, 'switches': ['dry-run-s1']}
+2026-11-14 21:04:58,400 INFO reservation: [dry-run] remove R002
+2026-11-14 21:04:58,400 INFO reservation: released {'reservation_id': 'R002', 'bandwidth_mbps': 3.0}
+2026-11-14 21:04:58,432 INFO reservation: [dry-run] install R003 client=C5 ip=10.0.0.5 3.0 Mbps meter=2
+2026-11-14 21:04:58,432 INFO reservation: reserved {'reservation_id': 'R003', 'client_id': 'C5', 'bandwidth_mbps': 3.0, 'meter_id': 2, 'switches': ['dry-run-s1']}
+2026-11-14 21:05:01,941 INFO reservation: [dry-run] remove R003
+2026-11-14 21:05:01,942 INFO reservation: released {'reservation_id': 'R003', 'bandwidth_mbps': 3.0}
+2026-11-14 21:05:04,023 INFO reservation: [dry-run] install R005 client=C16 ip=10.0.0.16 2.0 Mbps meter=2
+2026-11-14 21:05:04,023 INFO reservation: reserved {'reservation_id': 'R005', 'client_id': 'C16', 'bandwidth_mbps': 2.0, 'meter_id': 2, 'switches': ['dry-run-s1']}
+2026-11-14 21:05:04,024 INFO reservation: [dry-run] install R004 client=C14 ip=10.0.0.14 2.0 Mbps meter=3
+2026-11-14 21:05:04,026 INFO reservation: reserved {'reservation_id': 'R004', 'client_id': 'C14', 'bandwidth_mbps': 2.0, 'meter_id': 3, 'switches': ['dry-run-s1']}
+2026-11-14 21:05:04,027 INFO reservation: [dry-run] install R006 client=C17 ip=10.0.0.17 2.0 Mbps meter=4
+2026-11-14 21:05:04,028 INFO reservation: reserved {'reservation_id': 'R006', 'client_id': 'C17', 'bandwidth_mbps': 2.0, 'meter_id': 4, 'switches': ['dry-run-s1']}
+2026-11-14 21:05:04,070 INFO reservation: [dry-run] remove R001
+2026-11-14 21:05:04,070 INFO reservation: released {'reservation_id': 'R001', 'bandwidth_mbps': 4.0}

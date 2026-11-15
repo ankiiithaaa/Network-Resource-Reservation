@@ -1,0 +1,90 @@
+[21:04:57] SDN controller reachable at http://127.0.0.1:18081, switches: ['dry-run-s1']
+[21:04:57] Capacity: 10 Mbps
+[21:04:57] Reservation server listening on 127.0.0.1:15000 (TCP)
+[21:04:58] Client connected from 127.0.0.1:52509 (1 connection(s) so far)
+[21:04:58] Client 127.0.0.1:52509 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:04:58] Client connected from 127.0.0.1:52510 (2 connection(s) so far)
+[21:04:58] SDN policy INSTALLED for R001 (client C1, ip 10.0.0.1, meter 1, switches ['dry-run-s1'])
+[21:04:58] ACCEPTED R001: C1 reserved 4 Mbps for 60s -> remaining 6 Mbps
+[21:04:58] Client 127.0.0.1:52510 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:04:58] Client connected from 127.0.0.1:52512 (3 connection(s) so far)
+[21:04:58] SDN policy INSTALLED for R002 (client C2, ip 10.0.0.2, meter 2, switches ['dry-run-s1'])
+[21:04:58] ACCEPTED R002: C2 reserved 3 Mbps for 60s -> remaining 3 Mbps
+[21:04:58] Client 127.0.0.1:52512 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:04:58] Client connected from 127.0.0.1:52514 (4 connection(s) so far)
+[21:04:58] REJECTED C3 (5 Mbps): Insufficient bandwidth: requested 5 Mbps, only 3 Mbps available
+[21:04:58] Client 127.0.0.1:52514 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:04:58] Client connected from 127.0.0.1:52515 (5 connection(s) so far)
+[21:04:58] REJECTED C4 (-2 Mbps): Invalid request: bandwidth must be greater than 0 Mbps
+[21:04:58] Client 127.0.0.1:52515 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:04:58] Client connected from 127.0.0.1:52516 (6 connection(s) so far)
+[21:04:58] Invalid request from 127.0.0.1:52516: malformed JSON (Expecting property name enclosed in double quotes)
+[21:04:58] Client 127.0.0.1:52516 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:04:58] Client connected from 127.0.0.1:52517 (7 connection(s) so far)
+[21:04:58] REJECTED C4 (abc Mbps): Invalid request: bandwidth must be a number (Mbps)
+[21:04:58] Client 127.0.0.1:52517 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:04:58] Client connected from 127.0.0.1:52518 (8 connection(s) so far)
+[21:04:58] REJECTED C1 (1 Mbps): Client C1 already holds reservation R001
+[21:04:58] Client 127.0.0.1:52518 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:04:58] Client connected from 127.0.0.1:52520 (9 connection(s) so far)
+[21:04:58] SDN policy REMOVED for R002
+[21:04:58] Reservation R002 released. 3 Mbps released. Available bandwidth: 6 Mbps.
+[21:04:58] Client 127.0.0.1:52520 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:04:58] Client connected from 127.0.0.1:52522 (10 connection(s) so far)
+[21:04:58] SDN policy INSTALLED for R003 (client C5, ip 10.0.0.5, meter 2, switches ['dry-run-s1'])
+[21:04:58] ACCEPTED R003: C5 reserved 3 Mbps for 3s -> remaining 3 Mbps
+[21:04:58] Client 127.0.0.1:52522 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:01] SDN policy REMOVED for R003
+[21:05:01] Reservation R003 expired. 3 Mbps released. Available bandwidth: 6 Mbps.
+[21:05:03] Client connected from 127.0.0.1:52525 (11 connection(s) so far)
+[21:05:03] Client 127.0.0.1:52525 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:03] Client connected from 127.0.0.1:52526 (12 connection(s) so far)
+[21:05:03] Client 127.0.0.1:52526 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:03] Client connected from 127.0.0.1:52528 (13 connection(s) so far)
+[21:05:03] Client 127.0.0.1:52528 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:03] Client connected from 127.0.0.1:52529 (14 connection(s) so far)
+[21:05:03] Client 127.0.0.1:52529 connection error: [WinError 10054] An existing connection was forcibly closed by the remote host
+[21:05:03] Client 127.0.0.1:52529 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:03] Client connected from 127.0.0.1:52530 (15 connection(s) so far)
+[21:05:03] Client 127.0.0.1:52530 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:03] Client connected from 127.0.0.1:52531 (16 connection(s) so far)
+[21:05:03] Client connected from 127.0.0.1:52532 (17 connection(s) so far)
+[21:05:03] Client connected from 127.0.0.1:52534 (18 connection(s) so far)
+[21:05:03] Client connected from 127.0.0.1:52533 (19 connection(s) so far)
+[21:05:03] Client connected from 127.0.0.1:52535 (20 connection(s) so far)
+[21:05:03] Client connected from 127.0.0.1:52536 (21 connection(s) so far)
+[21:05:03] Client connected from 127.0.0.1:52537 (22 connection(s) so far)
+[21:05:03] Client connected from 127.0.0.1:52538 (23 connection(s) so far)
+[21:05:04] REJECTED C12 (2 Mbps): Insufficient bandwidth: requested 2 Mbps, only 0 Mbps available
+[21:05:04] Client 127.0.0.1:52533 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] REJECTED C15 (2 Mbps): Insufficient bandwidth: requested 2 Mbps, only 0 Mbps available
+[21:05:04] Client 127.0.0.1:52536 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] REJECTED C10 (2 Mbps): Insufficient bandwidth: requested 2 Mbps, only 0 Mbps available
+[21:05:04] Client 127.0.0.1:52531 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] SDN policy INSTALLED for R005 (client C16, ip 10.0.0.16, meter 2, switches ['dry-run-s1'])
+[21:05:04] SDN policy INSTALLED for R004 (client C14, ip 10.0.0.14, meter 3, switches ['dry-run-s1'])
+[21:05:04] SDN policy INSTALLED for R006 (client C17, ip 10.0.0.17, meter 4, switches ['dry-run-s1'])
+[21:05:04] REJECTED C11 (2 Mbps): Insufficient bandwidth: requested 2 Mbps, only 0 Mbps available
+[21:05:04] Client 127.0.0.1:52532 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] REJECTED C13 (2 Mbps): Insufficient bandwidth: requested 2 Mbps, only 0 Mbps available
+[21:05:04] Client 127.0.0.1:52534 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] ACCEPTED R005: C16 reserved 2 Mbps for 60s -> remaining 0 Mbps
+[21:05:04] Client 127.0.0.1:52537 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] ACCEPTED R004: C14 reserved 2 Mbps for 60s -> remaining 0 Mbps
+[21:05:04] Client 127.0.0.1:52535 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] ACCEPTED R006: C17 reserved 2 Mbps for 60s -> remaining 0 Mbps
+[21:05:04] Client 127.0.0.1:52538 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] Client connected from 127.0.0.1:52542 (24 connection(s) so far)
+[21:05:04] Client 127.0.0.1:52542 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] Client connected from 127.0.0.1:52544 (25 connection(s) so far)
+[21:05:04] SDN policy REMOVED for R001
+[21:05:04] Reservation R001 released. 4 Mbps released. Available bandwidth: 4 Mbps.
+[21:05:04] Client 127.0.0.1:52544 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] Client connected from 127.0.0.1:52546 (26 connection(s) so far)
+[21:05:04] Client 127.0.0.1:52546 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:04] Client connected from 127.0.0.1:52547 (27 connection(s) so far)
+[21:05:06] Reservation R007 for C20 ROLLED BACK: controller unreachable at http://127.0.0.1:18081 ([WinError 10061] No connection could be made because the target machine actively refused it)
+[21:05:06] REJECTED C20 (2 Mbps): SDN policy installation failed, reservation rolled back (controller unreachable at http://127.0.0.1:18081 ([WinError 10061] No connection could be made because the target machine actively refused it))
+[21:05:06] Client 127.0.0.1:52547 disconnected (server keeps running; its reservations stay until they expire or are released)
+[21:05:06] Client connected from 127.0.0.1:52549 (28 connection(s) so far)
+[21:05:06] Client 127.0.0.1:52549 disconnected (server keeps running; its reservations stay until they expire or are released)

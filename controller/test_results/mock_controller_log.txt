@@ -1,0 +1,16 @@
+2026-11-14 12:30:07,280 INFO reservation: Loaded config from /home/claude/Person2_SDN_Controller/config/config.json
+2026-11-14 12:30:07,282 INFO root: MOCK controller API on http://127.0.0.1:8099 (no real switches)
+2026-11-14 12:30:08,750 INFO reservation: [dry-run] install R001 client=C1 ip=10.0.0.1 4 Mbps meter=1
+2026-11-14 12:30:08,750 INFO reservation: reserved {'reservation_id': 'R001', 'client_id': 'C1', 'bandwidth_mbps': 4, 'meter_id': 1, 'switches': ['dry-run-s1']}
+2026-11-14 12:30:08,756 INFO reservation: [dry-run] install R002 client=C2 ip=10.0.0.2 5 Mbps meter=2
+2026-11-14 12:30:08,756 INFO reservation: reserved {'reservation_id': 'R002', 'client_id': 'C2', 'bandwidth_mbps': 5, 'meter_id': 2, 'switches': ['dry-run-s1']}
+2026-11-14 12:30:08,761 INFO reservation: rejected {'reservation_id': 'R003', 'client_id': 'C3', 'reason': 'insufficient_capacity'}
+2026-11-14 12:30:08,773 INFO reservation: [dry-run] update R001 -> 5 Mbps
+2026-11-14 12:30:08,773 INFO reservation: updated {'reservation_id': 'R001', 'old_mbps': 4, 'new_mbps': 5}
+2026-11-14 12:30:08,778 INFO reservation: rejected {'reservation_id': 'R001', 'client_id': 'C1', 'reason': 'insufficient_capacity'}
+2026-11-14 12:30:08,784 INFO reservation: [dry-run] remove R001
+2026-11-14 12:30:08,784 INFO reservation: released {'reservation_id': 'R001', 'bandwidth_mbps': 5}
+2026-11-14 12:30:08,796 INFO reservation: [dry-run] install R004 client=C3 ip=10.0.0.3 2 Mbps meter=1
+2026-11-14 12:30:08,796 INFO reservation: reserved {'reservation_id': 'R004', 'client_id': 'C3', 'bandwidth_mbps': 2, 'meter_id': 1, 'switches': ['dry-run-s1']}
+2026-11-14 12:30:12,282 INFO reservation: [dry-run] remove R004
+2026-11-14 12:30:12,282 INFO reservation: expired {'reservation_id': 'R004', 'bandwidth_mbps': 2, 'error': None}

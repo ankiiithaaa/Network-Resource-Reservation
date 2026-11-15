@@ -1,0 +1,17 @@
+{
+  "switch_mode": "controller",
+  "repeats": 3,
+  "scenario": "dual_tcp",
+  "mean_mbps": {
+    "static": {
+      "h1": 3.74708,
+      "h2": 3.74227,
+      "combined": 7.48935
+    },
+    "reservation": {
+      "h1": 5.063406666666666,
+      "h2": 3.5330766666666666,
+      "combined": 8.596483333333333
+    }
+  }
+}

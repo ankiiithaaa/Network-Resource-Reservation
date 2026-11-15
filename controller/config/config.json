@@ -1,0 +1,16 @@
+{
+  "api_host": "127.0.0.1",
+  "api_port": 8081,
+  "openflow_port": 6653,
+  "total_bandwidth_mbps": 10,
+  "default_duration_sec": 0,
+  "max_duration_sec": 3600,
+  "expiry_check_interval_sec": 1,
+  "enforce_direction": "src",
+  "reserved_flow_priority": 100,
+  "client_map": {
+    "C1": "10.0.0.1",
+    "C2": "10.0.0.2",
+    "C3": "10.0.0.3"
+  }
+}

@@ -1,0 +1,23 @@
+test_bad_config (test_offline.OfflineTests.test_bad_config) ... ok
+test_class_byte_counter (test_offline.OfflineTests.test_class_byte_counter) ... ok
+test_cli_help_does_not_require_mininet (test_offline.OfflineTests.test_cli_help_does_not_require_mininet) ... ok
+test_comparison_requires_matched_repeats (test_offline.OfflineTests.test_comparison_requires_matched_repeats) ... ok
+test_controller_target_cannot_be_confused_with_other_controller (test_offline.OfflineTests.test_controller_target_cannot_be_confused_with_other_controller) ... ok
+test_csv_blanks_and_overwrite_protection (test_offline.OfflineTests.test_csv_blanks_and_overwrite_protection) ... ok
+test_default_addresses_ports_and_capacity (test_offline.OfflineTests.test_default_addresses_ports_and_capacity) ... ok
+test_failed_iperf_is_never_a_zero_measurement (test_offline.OfflineTests.test_failed_iperf_is_never_a_zero_measurement) ... ok
+test_legacy_and_modern_udp_uses_server_data (test_offline.OfflineTests.test_legacy_and_modern_udp_uses_server_data) ... ok
+test_ping_no_reply_has_no_rtt (test_offline.OfflineTests.test_ping_no_reply_has_no_rtt) ... ok
+test_ping_success (test_offline.OfflineTests.test_ping_success) ... ok
+test_policy_tree_and_filter_are_specific (test_offline.OfflineTests.test_policy_tree_and_filter_are_specific) ... ok
+test_tcp_uses_receiver_summary (test_offline.OfflineTests.test_tcp_uses_receiver_summary) ... ok
+test_verify_ports_rejects_wrong_port_mapping (test_offline.OfflineTests.test_verify_ports_rejects_wrong_port_mapping) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.205s
+
+OK
+Plotting smoke test using temporary synthetic fixtures, not project measurements.
+/tmp/tmps_lk9lmi/graphs/goodput.png
+/tmp/tmps_lk9lmi/graphs/latency_loss.png
+PASS: both temporary PNGs generated and validated; fixture data not bundled.

@@ -1,0 +1,16 @@
+loading app controller.py
+loading app ryu.controller.ofp_handler
+instantiating app controller.py of ReservationController
+Loaded config from /home/pes1ug25am043-ankitha-p/Network-Resource-Reservation/controller/config/config.json
+Controller ready: capacity 10 Mbps, API 127.0.0.1:8081
+instantiating app ryu.controller.ofp_handler of OFPHandler
+Reservation API listening on http://127.0.0.1:8081
+Switch connected: dpid=0000000000000001
+Switch 0000000000000001 registered (0 reservations replayed)
+Installed meter 1 + flows for R001 (10.0.0.1, 4.0 Mbps) on 0000000000000001
+reserved {'reservation_id': 'R001', 'client_id': 'C1', 'bandwidth_mbps': 4.0, 'meter_id': 1, 'switches': ['0000000000000001']}
+Installed meter 2 + flows for R002 (10.0.0.2, 3.0 Mbps) on 0000000000000001
+reserved {'reservation_id': 'R002', 'client_id': 'C2', 'bandwidth_mbps': 3.0, 'meter_id': 2, 'switches': ['0000000000000001']}
+Removed meter 2 + flows for R002 on 0000000000000001
+released {'reservation_id': 'R002', 'bandwidth_mbps': 3.0}
+Switch 0000000000000001 disconnected

@@ -1,0 +1,52 @@
+{
+  "started_utc": "2026-11-15T08:34:03+00:00",
+  "switch_mode": "controller",
+  "config": {
+    "controller": {
+      "ip": "127.0.0.1",
+      "port": 6653,
+      "wait_seconds": 12
+    },
+    "switch": {
+      "name": "s1",
+      "dpid": "0000000000000001",
+      "protocol": "OpenFlow13"
+    },
+    "hosts": {
+      "h1": {
+        "ip": "10.0.0.1/24",
+        "mac": "02:00:00:00:00:01",
+        "port": 1
+      },
+      "h2": {
+        "ip": "10.0.0.2/24",
+        "mac": "02:00:00:00:00:02",
+        "port": 2
+      },
+      "h3": {
+        "ip": "10.0.0.3/24",
+        "mac": "02:00:00:00:00:03",
+        "port": 3
+      }
+    },
+    "server_host": {
+      "name": "h4",
+      "ip": "10.0.0.4/24",
+      "mac": "02:00:00:00:00:04",
+      "port": 4,
+      "root_namespace": true
+    },
+    "benchmark": {
+      "capacity_mbps": 10,
+      "reserved_mbps": 6,
+      "duration_seconds": 8,
+      "repeats": 3,
+      "reserved_port": 5201,
+      "competing_port": 5202,
+      "udp_offer_mbps_per_flow": 12
+    }
+  },
+  "python": "3.14.4",
+  "kernel": "7.0.0-29-generic",
+  "os_release": "PRETTY_NAME=\"Ubuntu 26.04 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"26.04\"\nVERSION=\"26.04 (Resolute Raccoon)\"\nVERSION_CODENAME=resolute\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=resolute\nLOGO=ubuntu-logo\n"
+}

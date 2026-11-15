@@ -1,0 +1,231 @@
+### health
+{
+  "status": "ok",
+  "switches": [
+    "dry-run-s1"
+  ]
+}  -> HTTP 200
+### reserve R001 (4 Mbps)
+{
+  "status": "ok",
+  "action": "reserve",
+  "reservation": {
+    "reservation_id": "R001",
+    "client_id": "C1",
+    "client_ip": "10.0.0.1",
+    "bandwidth_mbps": 4,
+    "meter_id": 1,
+    "created_at": "2026-11-14T12:30:08+00:00",
+    "expires_at": null,
+    "installed_on_switches": [
+      "dry-run-s1"
+    ]
+  }
+}  -> HTTP 200
+### reserve R002 (5 Mbps)
+{
+  "status": "ok",
+  "action": "reserve",
+  "reservation": {
+    "reservation_id": "R002",
+    "client_id": "C2",
+    "client_ip": "10.0.0.2",
+    "bandwidth_mbps": 5,
+    "meter_id": 2,
+    "created_at": "2026-11-14T12:30:08+00:00",
+    "expires_at": null,
+    "installed_on_switches": [
+      "dry-run-s1"
+    ]
+  }
+}  -> HTTP 200
+### reserve R003 (4 Mbps) must be REJECTED, only 1 Mbps left
+{
+  "status": "error",
+  "error": "insufficient_capacity",
+  "message": "requested 4 Mbps but only 1.0 Mbps available",
+  "requested_mbps": 4,
+  "available_mbps": 1.0
+}  -> HTTP 409
+### capacity
+{
+  "capacity_mbps": 10.0,
+  "used_mbps": 9,
+  "available_mbps": 1.0,
+  "active_count": 2,
+  "stats": {
+    "accepted": 2,
+    "rejected": 1,
+    "released": 0,
+    "expired": 0,
+    "updated": 0
+  },
+  "switches": [
+    "dry-run-s1"
+  ],
+  "status": "ok"
+}  -> HTTP 200
+### update R001 -> 5 Mbps (fits: 10 - R002's 5, accepted)
+{
+  "status": "ok",
+  "action": "update",
+  "reservation": {
+    "reservation_id": "R001",
+    "client_id": "C1",
+    "client_ip": "10.0.0.1",
+    "bandwidth_mbps": 5,
+    "meter_id": 1,
+    "created_at": "2026-11-14T12:30:08+00:00",
+    "expires_at": null
+  }
+}  -> HTTP 200
+### update R001 -> 6 Mbps (over capacity, rejected)
+{
+  "status": "error",
+  "error": "insufficient_capacity",
+  "message": "requested 6 Mbps but only 5.0 Mbps available",
+  "requested_mbps": 6,
+  "available_mbps": 5.0
+}  -> HTTP 409
+### release R001
+{
+  "reservation_id": "R001",
+  "released_mbps": 5,
+  "status": "ok",
+  "action": "release"
+}  -> HTTP 200
+### release R001 again (404 = already gone)
+{
+  "status": "error",
+  "error": "not_found",
+  "message": "no active reservation 'R001' (already released or expired?)"
+}  -> HTTP 404
+### reserve R004 with 3 s duration (C3)
+{
+  "status": "ok",
+  "action": "reserve",
+  "reservation": {
+    "reservation_id": "R004",
+    "client_id": "C3",
+    "client_ip": "10.0.0.3",
+    "bandwidth_mbps": 2,
+    "meter_id": 1,
+    "created_at": "2026-11-14T12:30:08+00:00",
+    "expires_at": "2026-11-14T12:30:11+00:00",
+    "remaining_sec": 3.0,
+    "installed_on_switches": [
+      "dry-run-s1"
+    ]
+  }
+}  -> HTTP 200
+### wait 5 s for expiry
+### R004 should now be 404
+{
+  "status": "error",
+  "error": "not_found",
+  "message": "no active reservation 'R004'"
+}  -> HTTP 404
+### active reservations
+{
+  "status": "ok",
+  "reservations": [
+    {
+      "reservation_id": "R002",
+      "client_id": "C2",
+      "client_ip": "10.0.0.2",
+      "bandwidth_mbps": 5,
+      "meter_id": 2,
+      "created_at": "2026-11-14T12:30:08+00:00",
+      "expires_at": null
+    }
+  ],
+  "summary": {
+    "capacity_mbps": 10.0,
+    "used_mbps": 5,
+    "available_mbps": 5.0,
+    "active_count": 1,
+    "stats": {
+      "accepted": 3,
+      "rejected": 2,
+      "released": 1,
+      "expired": 1,
+      "updated": 1
+    },
+    "switches": [
+      "dry-run-s1"
+    ]
+  }
+}  -> HTTP 200
+### event log
+{
+  "status": "ok",
+  "events": [
+    {
+      "time": "2026-11-14T12:30:08+00:00",
+      "event": "reserved",
+      "reservation_id": "R001",
+      "client_id": "C1",
+      "bandwidth_mbps": 4,
+      "meter_id": 1,
+      "switches": [
+        "dry-run-s1"
+      ]
+    },
+    {
+      "time": "2026-11-14T12:30:08+00:00",
+      "event": "reserved",
+      "reservation_id": "R002",
+      "client_id": "C2",
+      "bandwidth_mbps": 5,
+      "meter_id": 2,
+      "switches": [
+        "dry-run-s1"
+      ]
+    },
+    {
+      "time": "2026-11-14T12:30:08+00:00",
+      "event": "rejected",
+      "reservation_id": "R003",
+      "client_id": "C3",
+      "reason": "insufficient_capacity"
+    },
+    {
+      "time": "2026-11-14T12:30:08+00:00",
+      "event": "updated",
+      "reservation_id": "R001",
+      "old_mbps": 4,
+      "new_mbps": 5
+    },
+    {
+      "time": "2026-11-14T12:30:08+00:00",
+      "event": "rejected",
+      "reservation_id": "R001",
+      "client_id": "C1",
+      "reason": "insufficient_capacity"
+    },
+    {
+      "time": "2026-11-14T12:30:08+00:00",
+      "event": "released",
+      "reservation_id": "R001",
+      "bandwidth_mbps": 5
+    },
+    {
+      "time": "2026-11-14T12:30:08+00:00",
+      "event": "reserved",
+      "reservation_id": "R004",
+      "client_id": "C3",
+      "bandwidth_mbps": 2,
+      "meter_id": 1,
+      "switches": [
+        "dry-run-s1"
+      ]
+    },
+    {
+      "time": "2026-11-14T12:30:12+00:00",
+      "event": "expired",
+      "reservation_id": "R004",
+      "bandwidth_mbps": 2,
+      "error": null
+    }
+  ]
+}  -> HTTP 200

@@ -1,0 +1,10 @@
+BLOCKED environment_preflight | requires sudo/root inside an Ubuntu VM; missing CAP_NET_ADMIN; missing CAP_SYS_ADMIN; missing commands: mnexec, ping, ovs-vsctl, ovs-ofctl, mn, iperf3, ethtool
+NOT_RUN topology_ports | Environment preflight blocked live execution
+NOT_RUN controller_openflow | Environment preflight blocked live execution
+NOT_RUN all_pairs_reachable | Environment preflight blocked live execution
+NOT_RUN openflow_rules | Environment preflight blocked live execution
+NOT_RUN static_matrix | Environment preflight blocked live execution
+NOT_RUN reservation_matrix | Environment preflight blocked live execution
+NOT_RUN reservation_classification | Environment preflight blocked live execution
+NOT_RUN compare_policies | Environment preflight blocked live execution
+Benchmark exit: 2

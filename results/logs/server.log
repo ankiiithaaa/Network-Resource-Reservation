@@ -1,0 +1,16 @@
+[14:56:49] SDN controller reachable at http://127.0.0.1:8081, switches: ['0000000000000001']
+[14:56:49] Capacity: 10 Mbps
+[14:56:49] Reservation server listening on 10.0.0.4:5000 (TCP)
+[14:58:02] Client connected from 10.0.0.1:43320 (1 connection(s) so far)
+[14:58:02] SDN policy INSTALLED for R001 (client C1, ip 10.0.0.1, meter 1, switches ['0000000000000001'])
+[14:58:02] ACCEPTED R001: C1 reserved 4 Mbps for 300s -> remaining 6 Mbps
+[14:58:02] Client 10.0.0.1:43320 disconnected (server keeps running; its reservations stay until they expire or are released)
+[14:58:14] Client connected from 10.0.0.2:42080 (2 connection(s) so far)
+[14:58:14] SDN policy INSTALLED for R002 (client C2, ip 10.0.0.2, meter 2, switches ['0000000000000001'])
+[14:58:14] ACCEPTED R002: C2 reserved 3 Mbps for 120s -> remaining 3 Mbps
+[14:58:14] Client 10.0.0.2:42080 disconnected (server keeps running; its reservations stay until they expire or are released)
+[14:58:26] Client connected from 10.0.0.3:55300 (3 connection(s) so far)
+[14:58:26] REJECTED C3 (5 Mbps): Insufficient bandwidth: requested 5 Mbps, only 3 Mbps available
+[14:58:26] Client 10.0.0.3:55300 disconnected (server keeps running; its reservations stay until they expire or are released)
+[15:00:14] SDN policy REMOVED for R002
+[15:00:14] Reservation R002 expired. 3 Mbps released. Available bandwidth: 6 Mbps.

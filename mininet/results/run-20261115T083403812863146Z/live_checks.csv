@@ -1,0 +1,11 @@
+check,status,detail
+environment_preflight,PASS,"Root, capabilities, Mininet, OVS and measurement tools available"
+topology_ports,PASS,s1 ports 1–3 match h1–h3; see raw/switch_and_controller.txt
+controller_openflow,PASS,OVS reports connected to requested controller
+all_pairs_reachable,PASS,Mininet pingall after warm-up: 0% packet loss
+openflow_rules,PASS,Recorded OpenFlow 1.3 entries; inspect raw/flows_after_ping.txt
+static_matrix,PASS,24 measured rows from idle/single/dual scenarios
+reservation_matrix,PASS,24 measured rows from idle/single/dual scenarios
+reservation_classification,PASS,"Observed byte increases on both classes: {'1:10': 53798882, '1:20': 22469447}; see raw counters"
+compare_policies,PASS,"h1 static 3.747 Mbps, reserved 5.063 Mbps; configured h1 rate 6 Mbps. See measured receiver goodput and HTB counters."
+live_run,PASS,Results in results/run-20261115T083403812863146Z/performance_results.csv

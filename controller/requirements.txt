@@ -1,0 +1,11 @@
+# Install on Ubuntu 20.04 (Python 3.8) inside a virtualenv. Ryu 4.34 does not
+# work reliably on Python 3.10+ and breaks with newer eventlet releases, so the
+# versions below are pinned on purpose.
+ryu==4.34
+eventlet==0.30.2
+# Only if pip complains about setuptools while installing ryu:
+setuptools==58.0.0
+
+# Not installed with pip (use apt on Ubuntu):
+#   mininet, openvswitch-switch, iperf
+# mock_controller.py and the unit tests need nothing beyond the standard library.

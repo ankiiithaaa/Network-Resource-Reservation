@@ -1,0 +1,59 @@
+f085db81-9e7c-4d7a-bb37-e36724958d26
+    Bridge s1
+        Controller "tcp:127.0.0.1:6653"
+            is_connected: true
+        fail_mode: secure
+        Port s1
+            Interface s1
+                type: internal
+        Port s1-eth3
+            Interface s1-eth3
+        Port s1-eth1
+            Interface s1-eth1
+        Port s1-eth2
+            Interface s1-eth2
+    ovs_version: "3.7.1"
+
+_uuid               : c67f56f3-968f-4e04-9d05-70268c46091d
+connection_mode     : []
+controller_burst_limit: []
+controller_queue_size: []
+controller_rate_limit: []
+enable_async_messages: []
+external_ids        : {}
+inactivity_probe    : []
+is_connected        : true
+local_gateway       : []
+local_ip            : []
+local_netmask       : []
+max_backoff         : 1000
+other_config        : {}
+role                : other
+status              : {sec_since_connect="4", state=ACTIVE}
+target              : "tcp:127.0.0.1:6653"
+type                : []
+
+OFPT_FEATURES_REPLY (OF1.3) (xid=0x2): dpid:0000000000000001
+n_tables:254, n_buffers:0
+capabilities: FLOW_STATS TABLE_STATS PORT_STATS GROUP_STATS QUEUE_STATS
+OFPST_PORT_DESC reply (OF1.3) (xid=0x3):
+ 1(s1-eth1): addr:da:de:0a:89:2a:c7
+     config:     0
+     state:      LIVE
+     current:    10GB-FD COPPER
+     speed: 10000 Mbps now, 0 Mbps max
+ 2(s1-eth2): addr:3a:6f:ba:9e:96:b6
+     config:     0
+     state:      LIVE
+     current:    10GB-FD COPPER
+     speed: 10000 Mbps now, 0 Mbps max
+ 3(s1-eth3): addr:b2:aa:78:65:f0:23
+     config:     0
+     state:      LIVE
+     current:    10GB-FD COPPER
+     speed: 10000 Mbps now, 0 Mbps max
+ LOCAL(s1): addr:76:bb:e6:ec:5e:44
+     config:     PORT_DOWN
+     state:      LINK_DOWN
+     speed: 0 Mbps now, 0 Mbps max
+OFPT_GET_CONFIG_REPLY (OF1.3) (xid=0x5): frags=normal miss_send_len=0

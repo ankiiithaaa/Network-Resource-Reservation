@@ -1,0 +1,45 @@
+{
+  "started_utc": "2026-11-14T14:26:20+00:00",
+  "switch_mode": "controller",
+  "config": {
+    "controller": {
+      "ip": "127.0.0.1",
+      "port": 6653,
+      "wait_seconds": 12
+    },
+    "switch": {
+      "name": "s1",
+      "dpid": "0000000000000001",
+      "protocol": "OpenFlow13"
+    },
+    "hosts": {
+      "h1": {
+        "ip": "10.0.0.1/24",
+        "mac": "02:00:00:00:00:01",
+        "port": 1
+      },
+      "h2": {
+        "ip": "10.0.0.2/24",
+        "mac": "02:00:00:00:00:02",
+        "port": 2
+      },
+      "h3": {
+        "ip": "10.0.0.3/24",
+        "mac": "02:00:00:00:00:03",
+        "port": 3
+      }
+    },
+    "benchmark": {
+      "capacity_mbps": 10,
+      "reserved_mbps": 6,
+      "duration_seconds": 8,
+      "repeats": 3,
+      "reserved_port": 5201,
+      "competing_port": 5202,
+      "udp_offer_mbps_per_flow": 12
+    }
+  },
+  "python": "3.12.14",
+  "kernel": "6.18.57",
+  "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n"
+}
