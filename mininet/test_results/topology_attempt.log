@@ -1,2 +1,0 @@
-Topology stopped: requires sudo/root inside an Ubuntu VM; missing CAP_NET_ADMIN; missing CAP_SYS_ADMIN; missing commands: mnexec, ping, ovs-vsctl, ovs-ofctl
-Topology exit: 1

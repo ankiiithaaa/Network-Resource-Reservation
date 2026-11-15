@@ -1,14 +1,15 @@
-# Screenshot checklist
+# Mininet evidence
 
-No successful screenshots were captured in the restricted workspace. Use the real Ubuntu VM and save full terminal screenshots here.
+All screenshots and logs from the live run on the Ubuntu VM (15 Nov 2026) are kept in one
+place, `results/` at the top of the repository. This table shows where each part of the
+Mininet module is proven.
 
-| Filename | What the screenshot must show |
+| What | Evidence |
 |---|---|
-| 01_mininet_installation.png | `mn --version` and the installation smoke test with its actual `pingall` result |
-| 02_topology_nodes_ports.png | Running `topology.py`, then `nodes`, `net`, and `dump` |
-| 03_host_connectivity.png | Custom topology `pingall` and preferably an h1 → h3 ping with the packet summary |
-| 04_ryu_openflow.png | Controller terminal and `ovs-vsctl --columns=target,is_connected list Controller` showing the real status |
-| 05_openflow_rules.png | `ovs-ofctl -O OpenFlow13 dump-flows s1` after host traffic |
-| 06_benchmark_summary.png | Finished `test_cases.py` run and paths to the real CSV results |
-
-The README lists the exact CLI commands. Screenshot the terminal with Ubuntu's screenshot tool or your VM host's capture shortcut. Keep the actual terminal transcript as well. Do not substitute the professor's screenshots or a generated mockup.
+| Topology h1–h4 + s1 starts and connects to Ryu (`s1 is_connected=true`) | [`02_topology_pingall_h1_h4.png`](../../results/screenshots/02_topology_pingall_h1_h4.png), [`mininet_demo.log`](../../results/logs/mininet_demo.log) |
+| Host connectivity: `pingall` 0 % loss (12 / 12) | [`02_topology_pingall_h1_h4.png`](../../results/screenshots/02_topology_pingall_h1_h4.png) |
+| Controller connection | [`01_controller_switch_connected.png`](../../results/screenshots/01_controller_switch_connected.png) |
+| OpenFlow rules on s1 (`dump-flows`, `dump-meters`) | [`05_demo_TC01_TC02_TC03_TC07_flows_meters.png`](../../results/screenshots/05_demo_TC01_TC02_TC03_TC07_flows_meters.png), [`mininet_demo.log`](../../results/logs/mininet_demo.log) |
+| Bandwidth tests with iPerf3 | [`07_iperf_reserved_vs_unreserved.png`](../../results/screenshots/07_iperf_reserved_vs_unreserved.png), [`09_iperf_udp_meter_cap_4mbps.png`](../../results/screenshots/09_iperf_udp_meter_cap_4mbps.png) |
+| Static vs reservation benchmark (all checks PASS) | [`live_checks_ubuntu.csv`](../test_results/live_checks_ubuntu.csv), [`performance_results.csv`](../results/performance_results.csv), graphs in [`../results/graphs/`](../results/graphs/) |
+| Analysis of the results | [`results/ANALYSIS.md`](../../results/ANALYSIS.md) |

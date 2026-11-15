@@ -135,6 +135,8 @@ Plain text `RESERVE C1 4 60` also works (e.g. with `nc 10.0.0.4 5000`).
 
 ## Results
 
+**Full analysis of these results: [`results/ANALYSIS.md`](results/ANALYSIS.md).**
+
 All runs on Ubuntu 26.04 (VirtualBox), Mininet 2.3.0, Open vSwitch 3.7.1, Ryu 4.34
 (Python 3.9 venv), iPerf 3.20, 15 Nov 2026. Screenshots are in `results/screenshots/`.
 
