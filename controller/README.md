@@ -178,8 +178,9 @@ What was actually run (outputs in `test_results/`):
 team's Ubuntu VM with Mininet and Open vSwitch. Controller start-up, switch connection,
 meter and flow installation, removal on expiry and iPerf3 enforcement were all verified
 live; see `../results/logs/controller.log`, `../results/screenshots/` and the Results
-section of the top-level README. The automated `mininet_tests/e2e_test.py` was not run
-separately; the same checks were covered by the live demo.
+section of the top-level README. The automated `mininet_tests/e2e_test.py` was also run on
+the VM: **ALL PASSED** (10 Mbps UDP capped to 3.96 Mbps with a 4 Mbps reservation; see
+`../results/screenshots/10_e2e_test_part1_enforcement_pass.png` and `11_e2e_test_part2_all_passed.png`).
 
 ## 8. Known issues and limitations
 

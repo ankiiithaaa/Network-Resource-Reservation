@@ -233,6 +233,7 @@ Full output: `results/person1_test_results.csv`, `results/test_server_log.txt`.
 | Live demo | accept / accept / reject; flows and meters installed; expiry removes the flow |
 | Policy enforcement (iPerf3) | meter caps h1 at its reservation: UDP 10 → 3.92 Mbps |
 | Benchmark (`run_benchmark.sh`) | all live checks PASS; real CSV and graphs |
+| Controller end-to-end test (`controller/mininet_tests/e2e_test.py`) | **ALL PASSED**: connect, reserve (meter at 4000 kbps), 10 Mbps UDP capped to 3.96 Mbps, over-capacity rejected (409), update to 2000 kbps, release, 5 s expiry. Screenshots `10_` and `11_` |
 
 ### Tips for running it again
 
@@ -250,4 +251,3 @@ attempt, which was discarded).
 - State is in memory. Restarting the server releases leftover reservations on the controller at startup.
 - h4 has address 10.0.0.4 in the VM's root namespace. If the VM's own LAN also uses 10.0.0.0/24, change the subnet in `mininet/config/network.json`.
 - The controller API has no authentication and listens on localhost only.
-- `controller/mininet_tests/e2e_test.py` (the controller's own automated Mininet test) was not run as a separate script; the same checks (start-up, switch connection, flow install and removal, iPerf3 enforcement) were covered by the live demo above.

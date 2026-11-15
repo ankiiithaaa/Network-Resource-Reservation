@@ -13,3 +13,4 @@ controller is proven.
 | Over-capacity request rejected, nothing installed | [`05_demo_TC01_TC02_TC03_TC07_flows_meters.png`](../../results/screenshots/05_demo_TC01_TC02_TC03_TC07_flows_meters.png), [`server.log`](../../results/logs/server.log) |
 | Expiry removes flow and meter (`Removed meter 2 + flows for R002`) | [`controller.log`](../../results/logs/controller.log), [`mininet_demo.log`](../../results/logs/mininet_demo.log) |
 | Traffic limited by the meter (UDP 10 → 3.92 Mbps) | [`09_iperf_udp_meter_cap_4mbps.png`](../../results/screenshots/09_iperf_udp_meter_cap_4mbps.png) |
+| Automated end-to-end test: `RESULT: ALL PASSED` | [`10_e2e_test_part1_enforcement_pass.png`](../../results/screenshots/10_e2e_test_part1_enforcement_pass.png), [`11_e2e_test_part2_all_passed.png`](../../results/screenshots/11_e2e_test_part2_all_passed.png) |
