@@ -67,10 +67,16 @@ def mbps(text):
 
 
 def iperf(net, client, server, secs=5):
-    server.cmd("pkill iperf; iperf -s -f m > /dev/null 2>&1 &")
-    time.sleep(1)
+    # Stop any old iperf server and give it time to free port 5001; starting a
+    # new server straight after a kill can fail to bind ("Connection refused").
+    server.cmd("pkill -9 -x iperf; sleep 0.5")
+    server.cmd("iperf -s -f m > /dev/null 2>&1 &")
+    for _ in range(20):  # wait up to 5 s until the server is listening
+        if ":5001" in server.cmd("ss -ltn"):
+            break
+        time.sleep(0.25)
     out = client.cmd("iperf -c %s -t %d -f m" % (server.IP(), secs))
-    server.cmd("pkill iperf")
+    server.cmd("pkill -9 -x iperf; sleep 0.5")
     # Use the last line that carries a rate: newer iperf versions can print
     # further lines after the summary, so the very last line is not reliable.
     rates = [r for r in (mbps(line) for line in out.splitlines()) if r is not None]
